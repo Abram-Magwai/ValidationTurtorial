@@ -1,0 +1,47 @@
+﻿@model User;
+@{
+    ViewData["Title"] = "Create User Page";
+}
+
+<form asp-controller="Account" asp-action="Create" method="post">
+    <div class="form-group">
+        <div>
+            <span asp-validation-for=FirstName class="text-danger"></span>
+        </div>
+        <label asp-for=FirstName></label>
+        <input type="text" class="form-control" asp-for=FirstName />
+    </div>
+    <div class="form-group">
+        <div>
+            <span asp-validation-for=LastName class="text-danger"></span>
+        </div>
+        <label asp-for=LastName></label>
+        <input type="text" class="form-control" asp-for=LastName />
+    </div>
+    <div class="form-group">
+        <div>
+            <span asp-validation-for=Age class="text-danger"></span>
+        </div>
+        <label asp-for=Age></label>
+        <input type="text" class="form-control" asp-for=Age />
+    </div>
+    <div class="form-group mb-4">
+        <div>
+            <span asp-validation-for=SchoolLevel class="text-danger"></span>
+        </div>
+        <label asp-for=SchoolLevel></label>
+        <select asp-for="SchoolLevel" class="form-control" id="type">
+            <option value="Primary">Primary School</option>
+            <option value="Secondary">Secondary School</option>
+            <option value="High">High School</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+}
